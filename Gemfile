@@ -33,6 +33,9 @@ group :development, :test do
   # linter
   gem 'rubocop', require: false
   gem 'solargraph', require: false
+
+  # test
+  gem 'rspec-rails'
   gem 'factory_bot_rails'
 end
 
