@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_one_attached :image, dependent: false
   has_many :tickets, dependent: :destroy
   belongs_to :owner, class_name: "User"
 
@@ -9,6 +10,10 @@ class Event < ApplicationRecord
   validates :end_at, presence: true
   validate :start_at_should_be_before_end_at
 
+  attr_accessor :remove_image
+
+  before_save :remove_image_if_user_accept
+
   def created_by?(user)
     return false unless user
 
@@ -16,6 +21,10 @@ class Event < ApplicationRecord
   end
 
   private
+
+  def remove_image_if_user_accept
+    self.image = nil if ActiveRecord::Type::Boolean.new.cast(remove_image)
+  end
 
   def start_at_should_be_before_end_at
     return unless start_at && end_at
