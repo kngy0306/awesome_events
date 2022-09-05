@@ -18,8 +18,6 @@ jobs:
       # Add or replace dependency steps here
       - name: Set up Ruby
         uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 2.6
       # Add or replace database setup steps here
       - name: Build and test
         env:
