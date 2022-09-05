@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
       # Add or replace dependency steps here
       - name: Set up Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
       # Add or replace database setup steps here
       - name: Build and test
         env:
