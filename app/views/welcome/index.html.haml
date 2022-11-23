@@ -1,5 +1,14 @@
 %h1 イベント一覧
 
+%br
+
+- if @current_user 
+  %h2 ログインユーザー：#{@current_user.name}
+- else
+  %h2 ログインしていません
+
+%br
+
 %ul.list-group
   - @events.each do |event|
     = link_to(event, class: "list-group-item list-group-item-action") do
